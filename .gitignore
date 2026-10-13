@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+
+# Android / Capacitor (el proyecto android/ se puede versionar, pero no sus builds)
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/capacitor-cordova-android-plugins/
+
+# Claves de firma y secretos: nunca al repositorio
+*.keystore
+*.jks
+keystore.properties
+.env
+
+# Binarios (el APK se publica en GitHub Releases)
+*.apk
+*.aab
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

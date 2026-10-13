@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#030712">
+    <title>Lista de compras · Moneyto</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-950 text-gray-100" data-page="shopping">
+    <div id="shell-top"></div>
+    <div class="flex max-w-screen-2xl mx-auto w-full">
+        <aside id="shell-side" class="hidden md:block w-64 lg:w-72 bg-gray-900 border-r border-gray-800 min-h-[calc(100vh-4rem)] flex-shrink-0"></aside>
+
+        <main class="flex-1 p-4 md:p-6 lg:p-10 w-full min-w-0 max-w-2xl mx-auto">
+            <h1 class="text-2xl md:text-4xl font-semibold mb-1">Lista de compras</h1>
+            <p class="text-gray-400 text-sm mb-6">Cargá productos y precios. Al finalizar la compra se guarda como un gasto.</p>
+
+            <form id="add-form" class="bg-gray-900 rounded-3xl p-4 md:p-5 mb-6 grid grid-cols-1 sm:grid-cols-3 gap-3 items-end" novalidate>
+                <div>
+                    <label for="item-name" class="block text-xs text-gray-400 mb-1">Producto</label>
+                    <input type="text" id="item-name" maxlength="100" placeholder="Ej. leche" class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11 text-sm">
+                </div>
+                <div>
+                    <label for="item-price" class="block text-xs text-gray-400 mb-1">Precio</label>
+                    <input type="number" id="item-price" step="0.01" min="0.01" inputmode="decimal" class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11 text-sm">
+                </div>
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 rounded-3xl h-11 text-sm font-medium">Agregar</button>
+            </form>
+
+            <section class="bg-gray-900 rounded-3xl p-4 md:p-5 mb-6" aria-labelledby="items-title">
+                <h2 id="items-title" class="text-lg font-semibold mb-3 flex justify-between gap-3">
+                    <span>Productos</span>
+                    <span id="subtotal" class="text-emerald-300" aria-live="polite"></span>
+                </h2>
+                <ul id="items" class="space-y-2 max-h-96 overflow-y-auto"></ul>
+
+                <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label for="category-select" class="block text-sm text-gray-400 mb-1">Categoría del gasto</label>
+                        <select id="category-select" class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11 text-sm"></select>
+                    </div>
+                    <div>
+                        <label for="custom-category" class="block text-sm text-gray-400 mb-1">O escribí una nueva</label>
+                        <input type="text" id="custom-category" maxlength="60" class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11 text-sm">
+                    </div>
+                </div>
+                <p id="currency-note" class="text-xs text-gray-400 mt-2"></p>
+
+                <div class="flex gap-3 mt-5">
+                    <button type="button" id="btn-clear" class="flex-1 h-11 bg-red-500/20 text-red-300 hover:bg-red-500/30 rounded-3xl text-sm">Vaciar lista</button>
+                    <button type="button" id="btn-finish" class="flex-1 h-11 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-sm font-semibold">Finalizar compra</button>
+                </div>
+            </section>
+
+            <div id="result" class="hidden bg-emerald-900/30 border border-emerald-500/50 rounded-2xl p-4 text-sm" role="status"></div>
+        </main>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/shopping_list.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#030712">
+    <title>Presupuestos · Moneyto</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-950 text-gray-100" data-page="budgets">
+    <div id="shell-top"></div>
+    <div class="flex max-w-screen-2xl mx-auto w-full">
+        <aside id="shell-side" class="hidden md:block w-64 lg:w-72 bg-gray-900 border-r border-gray-800 min-h-[calc(100vh-4rem)] flex-shrink-0"></aside>
+
+        <main class="flex-1 p-4 md:p-6 lg:p-10 w-full min-w-0">
+            <h1 class="text-2xl md:text-4xl font-semibold mb-1">Presupuestos por categoría</h1>
+            <p class="text-gray-400 text-sm mb-5">Cada límite se aplica a un mes. Elegí qué mes querés revisar.</p>
+
+            <section class="bg-gray-900 rounded-3xl p-4 md:p-6 mb-6" aria-labelledby="form-title">
+                <h2 id="form-title" class="text-lg font-medium mb-3">Definir un límite mensual</h2>
+                <form id="form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-end" novalidate>
+                    <div>
+                        <label for="b-categoria" class="block text-xs text-gray-400 mb-1">Categoría de gasto</label>
+                        <div class="flex gap-2">
+                            <select id="b-categoria" class="flex-1 min-w-0 bg-gray-800 border border-gray-700 rounded-2xl px-3 h-11 text-sm"></select>
+                            <button type="button" id="btn-new-cat" class="bg-indigo-500 hover:bg-indigo-600 rounded-2xl px-4 h-11" aria-label="Crear una categoría de gasto nueva">+</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="b-limite" class="block text-xs text-gray-400 mb-1">Límite mensual</label>
+                        <input type="number" id="b-limite" step="0.01" min="0.01" inputmode="decimal" class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-3 h-11 text-sm">
+                    </div>
+                    <div>
+                        <label for="b-moneda" class="block text-xs text-gray-400 mb-1">Moneda</label>
+                        <select id="b-moneda" class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-3 h-11 text-sm"></select>
+                    </div>
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 rounded-3xl font-medium h-11 text-sm">Guardar presupuesto</button>
+                </form>
+            </section>
+
+            <div class="flex items-center gap-3 mb-3">
+                <label for="month" class="text-sm text-gray-400">Mes</label>
+                <select id="month" class="bg-gray-900 border border-gray-700 rounded-2xl px-3 h-10 text-sm"></select>
+            </div>
+            <div id="rates-note" class="mb-3"></div>
+
+            <div class="bg-gray-900 rounded-3xl overflow-hidden w-full">
+                <div class="table-responsive">
+                    <table class="w-full min-w-[680px]">
+                        <caption class="sr-only">Presupuestos del mes seleccionado</caption>
+                        <thead>
+                            <tr class="border-b border-gray-800">
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm">Categoría</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm">Límite</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm">Gastado</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm">Restante</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm w-48">Uso</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-right text-sm sticky right-0 bg-gray-900">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/budgets.js"></script>
+</body>
+</html>

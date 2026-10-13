@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#030712">
+    <title>Copias de seguridad · Moneyto</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-950 text-gray-100" data-page="backup">
+    <div id="shell-top"></div>
+    <div class="flex max-w-screen-2xl mx-auto w-full">
+        <aside id="shell-side" class="hidden md:block w-64 lg:w-72 bg-gray-900 border-r border-gray-800 min-h-[calc(100vh-4rem)] flex-shrink-0"></aside>
+
+        <main class="flex-1 p-4 md:p-6 lg:p-10 w-full min-w-0 max-w-2xl mx-auto">
+            <h1 class="text-2xl md:text-4xl font-semibold mb-1">Copias de seguridad</h1>
+            <p class="text-gray-400 text-sm mb-6">Tus datos viven solo en este dispositivo. Si desinstalás la app o borrás sus datos, se pierden: guardá una copia de vez en cuando.</p>
+
+            <section class="bg-gray-900 rounded-3xl p-5 md:p-8 mb-6" aria-labelledby="export-title">
+                <h2 id="export-title" class="text-xl font-semibold mb-2">Guardar una copia</h2>
+                <p class="text-gray-400 text-sm mb-4">Genera un archivo con gastos, ingresos, deudas, presupuestos, categorías y tasas.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button id="btn-export" type="button" class="bg-emerald-600 hover:bg-emerald-700 px-6 h-11 rounded-3xl text-sm font-medium">Guardar o compartir archivo</button>
+                    <button id="btn-copy" type="button" class="bg-gray-800 hover:bg-gray-700 px-6 h-11 rounded-3xl text-sm">Copiar como texto</button>
+                </div>
+            </section>
+
+            <section class="bg-gray-900 rounded-3xl p-5 md:p-8 mb-6" aria-labelledby="restore-title">
+                <h2 id="restore-title" class="text-xl font-semibold mb-2">Restaurar una copia</h2>
+                <p class="text-gray-400 text-sm mb-4">Elegí un archivo .json exportado antes. <strong class="text-red-300">Reemplaza todos los datos actuales.</strong> Funciona también con copias de la versión anterior.</p>
+                <label for="restore-file" class="sr-only">Archivo de copia de seguridad</label>
+                <input type="file" id="restore-file" accept=".json,application/json" class="bg-gray-800 border border-gray-700 rounded-2xl px-4 py-2 w-full mb-4 text-sm">
+                <button id="btn-restore" type="button" class="bg-indigo-600 hover:bg-indigo-700 px-6 h-11 rounded-3xl text-sm font-medium">Restaurar</button>
+            </section>
+
+            <section class="bg-gray-900 rounded-3xl p-5 md:p-8 border border-red-900/60" aria-labelledby="danger-title">
+                <h2 id="danger-title" class="text-xl font-semibold mb-2">Borrar todos los datos</h2>
+                <p class="text-gray-400 text-sm mb-4">Elimina todo lo guardado en este dispositivo. Antes, guardá una copia.</p>
+                <button id="btn-clear" type="button" class="bg-red-500/20 text-red-300 hover:bg-red-500/30 px-6 h-11 rounded-3xl text-sm">Borrar todo</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/backup.js"></script>
+</body>
+</html>

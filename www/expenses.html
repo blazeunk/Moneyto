@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#030712">
+    <title>Gastos · Moneyto</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-950 text-gray-100" data-page="expenses" data-kind="expense">
+    <div id="shell-top"></div>
+    <div class="flex max-w-screen-2xl mx-auto w-full">
+        <aside id="shell-side" class="hidden md:block w-64 lg:w-72 bg-gray-900 border-r border-gray-800 min-h-[calc(100vh-4rem)] flex-shrink-0"></aside>
+
+        <main class="flex-1 p-4 md:p-6 lg:p-10 w-full min-w-0">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                <h1 id="page-title" class="text-2xl md:text-4xl font-semibold"></h1>
+                <div class="flex gap-2">
+                    <button id="btn-new" type="button" class="bg-indigo-600 hover:bg-indigo-700 px-5 h-11 rounded-3xl text-sm font-medium">+ Nuevo</button>
+                    <button id="btn-copy" type="button" class="bg-gray-800 hover:bg-gray-700 px-5 h-11 rounded-3xl text-sm">Copiar lista</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                <div>
+                    <label for="filter-month" class="block text-xs text-gray-400 mb-1">Mes</label>
+                    <select id="filter-month" class="w-full bg-gray-900 border border-gray-700 rounded-2xl px-3 h-11 text-sm"></select>
+                </div>
+                <div>
+                    <label for="filter-cat" class="block text-xs text-gray-400 mb-1">Categoría</label>
+                    <select id="filter-cat" class="w-full bg-gray-900 border border-gray-700 rounded-2xl px-3 h-11 text-sm"></select>
+                </div>
+                <div>
+                    <label for="filter-text" class="block text-xs text-gray-400 mb-1">Buscar en la descripción</label>
+                    <input id="filter-text" type="search" maxlength="60" class="w-full bg-gray-900 border border-gray-700 rounded-2xl px-3 h-11 text-sm">
+                </div>
+            </div>
+
+            <p id="totals" class="text-sm text-gray-300 mb-1" aria-live="polite"></p>
+            <div id="rates-note" class="mb-3"></div>
+
+            <div class="bg-gray-900 rounded-3xl overflow-hidden w-full">
+                <div class="table-responsive">
+                    <table class="w-full min-w-[640px]">
+                        <caption id="table-caption" class="sr-only"></caption>
+                        <thead>
+                            <tr class="border-b border-gray-800">
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm">Fecha</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm">Monto</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm">Categoría</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-left text-sm">Descripción</th>
+                                <th scope="col" class="px-4 md:px-6 py-3 text-right text-sm sticky right-0 bg-gray-900">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[9999] p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="bg-gray-900 rounded-3xl w-full max-w-lg max-h-full overflow-y-auto">
+            <div class="px-6 py-4 border-b border-gray-800 flex justify-between items-center">
+                <h2 id="modal-title" class="text-xl font-semibold"></h2>
+                <button id="modal-close" type="button" class="text-2xl h-10 w-10 rounded-2xl hover:bg-gray-800" aria-label="Cerrar">×</button>
+            </div>
+            <form id="form" class="p-6 space-y-4" novalidate>
+                <input type="hidden" id="f-id">
+                <div>
+                    <label for="f-fecha" class="block text-sm text-gray-400 mb-1">Fecha</label>
+                    <input type="date" id="f-fecha" required class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="f-monto" class="block text-sm text-gray-400 mb-1">Monto</label>
+                        <input type="number" id="f-monto" step="0.01" min="0.01" inputmode="decimal" required class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11">
+                    </div>
+                    <div>
+                        <label for="f-moneda" class="block text-sm text-gray-400 mb-1">Moneda</label>
+                        <select id="f-moneda" class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11"></select>
+                    </div>
+                </div>
+                <div>
+                    <label for="f-categoria" class="block text-sm text-gray-400 mb-1">Categoría</label>
+                    <div class="flex gap-2">
+                        <select id="f-categoria" class="flex-1 min-w-0 bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11"></select>
+                        <button type="button" id="btn-new-cat" class="bg-indigo-500 hover:bg-indigo-600 rounded-2xl px-4 h-11" aria-label="Crear una categoría nueva">+</button>
+                    </div>
+                </div>
+                <div>
+                    <label for="f-descripcion" class="block text-sm text-gray-400 mb-1">Descripción (opcional)</label>
+                    <textarea id="f-descripcion" rows="2" maxlength="300" class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-4 py-2"></textarea>
+                </div>
+                <div class="flex gap-3 pt-2">
+                    <button type="button" id="btn-cancel" class="flex-1 h-11 border border-gray-700 rounded-3xl hover:bg-gray-800">Cancelar</button>
+                    <button type="submit" class="flex-1 h-11 bg-indigo-600 hover:bg-indigo-700 rounded-3xl font-medium">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/transactions.js"></script>
+</body>
+</html>

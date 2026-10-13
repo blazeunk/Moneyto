@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#030712">
+    <title>Inicio · Moneyto</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-950 text-gray-100" data-page="dashboard">
+    <div id="shell-top"></div>
+    <div class="flex max-w-screen-2xl mx-auto w-full">
+        <aside id="shell-side" class="hidden md:block w-64 lg:w-72 bg-gray-900 border-r border-gray-800 min-h-[calc(100vh-4rem)] flex-shrink-0"></aside>
+
+        <main class="flex-1 p-4 md:p-6 lg:p-10 w-full min-w-0">
+            <h1 class="text-2xl md:text-4xl font-semibold">Inicio</h1>
+            <div class="flex flex-wrap items-center gap-3 mt-2 mb-6">
+                <p class="text-gray-400 text-sm">Totales en <strong id="dash-currency" class="text-gray-200">USD</strong></p>
+                <label class="sr-only" for="period">Período</label>
+                <select id="period" class="bg-gray-900 border border-gray-700 rounded-2xl px-3 h-10 text-sm"></select>
+            </div>
+
+            <div id="rates-note"></div>
+
+            <section id="summary-cards" class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-6 mb-6" aria-label="Resumen"></section>
+
+            <section id="attention" class="hidden mb-6 bg-red-900/30 border border-red-500/60 rounded-2xl p-4" aria-labelledby="attention-title">
+                <h2 id="attention-title" class="font-semibold">Deudas que necesitan atención</h2>
+                <ul id="attention-list" class="mt-2 text-sm space-y-1"></ul>
+                <a href="debts.html" class="text-indigo-300 underline text-sm mt-3 inline-block">Ver todas las deudas</a>
+            </section>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+                <section class="bg-gray-900 rounded-3xl p-4 md:p-6" aria-labelledby="exp-title">
+                    <h2 id="exp-title" class="font-semibold mb-3">Gastos por categoría</h2>
+                    <div id="expensesChartBox" class="relative mx-auto" style="height:240px;max-width:360px"><canvas id="expensesChart" role="img" aria-label="Gráfico de gastos por categoría"></canvas></div>
+                    <ul id="expensesLegend" class="mt-4 text-sm space-y-1"></ul>
+                </section>
+                <section class="bg-gray-900 rounded-3xl p-4 md:p-6" aria-labelledby="inc-title">
+                    <h2 id="inc-title" class="font-semibold mb-3">Ingresos por fuente</h2>
+                    <div id="incomesChartBox" class="relative mx-auto" style="height:240px;max-width:360px"><canvas id="incomesChart" role="img" aria-label="Gráfico de ingresos por fuente"></canvas></div>
+                    <ul id="incomesLegend" class="mt-4 text-sm space-y-1"></ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/dashboard.js"></script>
+</body>
+</html>

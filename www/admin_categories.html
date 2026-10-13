@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#030712">
+    <title>Categorías · Moneyto</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-950 text-gray-100" data-page="categories">
+    <div id="shell-top"></div>
+    <div class="flex max-w-screen-2xl mx-auto w-full">
+        <aside id="shell-side" class="hidden md:block w-64 lg:w-72 bg-gray-900 border-r border-gray-800 min-h-[calc(100vh-4rem)] flex-shrink-0"></aside>
+
+        <main class="flex-1 p-4 md:p-6 lg:p-10 w-full min-w-0 max-w-3xl mx-auto">
+            <h1 class="text-2xl md:text-4xl font-semibold mb-1">Categorías</h1>
+            <p class="text-gray-400 text-sm mb-6">Los movimientos ya cargados conservan su categoría aunque la elimines de esta lista.</p>
+
+            <section class="bg-gray-900 rounded-3xl p-5 md:p-8 mb-6" data-section="expenseCategories" data-collection="expenses" aria-labelledby="exp-title">
+                <h2 id="exp-title" class="text-xl font-medium mb-4">Categorías de gastos</h2>
+                <form class="flex flex-col sm:flex-row gap-3 mb-5" novalidate>
+                    <label class="sr-only" for="new-expense-cat">Nueva categoría de gasto</label>
+                    <input id="new-expense-cat" maxlength="60" placeholder="Nueva categoría de gasto" class="flex-1 bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11 text-sm">
+                    <button type="submit" class="bg-red-500 hover:bg-red-600 px-6 rounded-3xl h-11 text-sm font-medium">Agregar</button>
+                </form>
+                <ul class="space-y-2"></ul>
+            </section>
+
+            <section class="bg-gray-900 rounded-3xl p-5 md:p-8" data-section="incomeCategories" data-collection="incomes" aria-labelledby="inc-title">
+                <h2 id="inc-title" class="text-xl font-medium mb-4">Categorías de ingresos</h2>
+                <form class="flex flex-col sm:flex-row gap-3 mb-5" novalidate>
+                    <label class="sr-only" for="new-income-cat">Nueva categoría de ingreso</label>
+                    <input id="new-income-cat" maxlength="60" placeholder="Nueva categoría de ingreso" class="flex-1 bg-gray-800 border border-gray-700 rounded-2xl px-4 h-11 text-sm">
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 px-6 rounded-3xl h-11 text-sm font-medium">Agregar</button>
+                </form>
+                <ul class="space-y-2"></ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/pages/categories.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "moneyto",
+  "version": "1.0.0",
+  "description": "App de finanzas personales para Android: gastos, ingresos, deudas, presupuestos y multi-moneda.",
+  "private": true,
+  "license": "MIT",
+  "author": "Gonzalo Meyer",
+  "scripts": {
+    "start": "python3 -m http.server 8080 --directory www",
+    "test": "node --test",
+    "build:css": "tailwindcss -c tailwind.config.js -i src/input.css -o www/css/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

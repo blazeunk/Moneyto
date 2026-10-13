@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#030712">
+    <meta http-equiv="refresh" content="1;url=dashboard.html">
+    <title>Moneyto</title>
+    <style>
+        html, body { height: 100%; margin: 0; }
+        body {
+            background: #030712;
+            color: #f3f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .logo {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: #4f46e5; font-size: 3rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+        a { color: #a5b4fc; }
+    </style>
+</head>
+<body>
+    <div class="logo" aria-hidden="true">🐒</div>
+    <p>Abriendo Moneyto…</p>
+    <p><a href="dashboard.html">Entrar ahora</a></p>
+    <script>
+        // Redirección inmediata; el meta refresh queda como respaldo.
+        window.location.replace('dashboard.html');
+    </script>
+</body>
+</html>
