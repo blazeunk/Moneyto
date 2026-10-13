@@ -4,9 +4,10 @@ App de finanzas personales para llevar ingresos, gastos, deudas y presupuestos d
 
 > **English summary:** Moneyto is a personal finance app (income, expenses, debts, monthly budgets, multi-currency totals, local backups). Built with vanilla JavaScript and Tailwind CSS, wrapped as an Android app with Capacitor. Data stays on the device. The core logic is dependency-free and unit tested with Node's built-in test runner.
 
-<p>
-  <img src="docs/screenshots/presupuestos.png" alt="Pantalla de presupuestos con barras de uso por categoría" width="62%">
-  <img src="docs/screenshots/gastos-movil.png" alt="Lista de gastos en el celular" width="26%">
+<p align="center">
+  <img src="docs/screenshots/inicio-movil.png" alt="Pantalla de inicio en Android con ingresos, gastos, balance y deudas por vencer" width="32%">
+  &nbsp;
+  <img src="docs/screenshots/graficos-movil.png" alt="Gráficos de gastos por categoría e ingresos por fuente en Android" width="32%">
 </p>
 
 ## Qué hace
@@ -90,12 +91,15 @@ Todo se guarda en el `localStorage` del dispositivo; Moneyto no envía datos a n
 
 Se mantienen las claves `gp_*` de la versión anterior, así que quien ya tenía datos cargados los conserva.
 
+## Estado
+
+Probada en un dispositivo Android: notificaciones de vencimiento, copias de seguridad (guardar y restaurar), gráficos y conversión de monedas.
+
 ## Limitaciones conocidas
 
 - Las tasas de cambio se cargan a mano. No hay actualización automática.
 - Chart.js se carga desde un CDN. Sin conexión, el inicio muestra la lista de categorías en texto en lugar del gráfico.
 - No hay sincronización entre dispositivos.
-- Los recordatorios nativos y el guardado de copias con el menú de compartir de Android usan la API de los plugins de Capacitor, pero todavía no se probaron en un dispositivo físico. Según la versión de Android, un aviso puede demorar unos minutos si el sistema no permite alarmas exactas.
 
 ## Licencia
 
