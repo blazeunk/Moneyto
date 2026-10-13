@@ -43,9 +43,9 @@ Resumen de la revisión de código de la primera versión y de lo que se hizo co
 - **Se quitó el reordenamiento por arrastre en gastos.** Con filtros por mes y orden por fecha no tiene sentido, y evitaba depender de Sortable.
 - **Tasas manuales.** Conectar una API de cotizaciones agregaría una dependencia externa y requiere conexión; queda como mejora futura.
 - **Sin cifrado local.** `localStorage` no está cifrado; para datos más sensibles habría que usar almacenamiento seguro del sistema.
-- **Sin probar en dispositivo físico:** notificaciones locales y compartir copias en Android.
 
 ## Cómo se verificó
 
 - `npm test`: 24 tests de la lógica pura.
 - Pruebas de punta a punta en un navegador headless (38 pasos): carga de las 9 pantallas sin errores de JavaScript, migración de datos viejos, conversión de monedas, filtros, alta/edición/baja, intento de XSS, restauración de copias v1 y v2, vista móvil y de escritorio. Esas pruebas no se incluyen en el repositorio porque requieren Playwright.
+- Prueba manual en un dispositivo Android: notificaciones de vencimiento, copias de seguridad (guardar y restaurar), gráficos y conversión de monedas.
